@@ -1,3 +1,5 @@
+![voidengine-level-editor](.github/preview.png)
+
 # VoidEngine Level Editor
 
 A small visual level editor for [VoidEngine](https://github.com/synthalorian/voidengine) (Odin + SDL2) 2D games.
