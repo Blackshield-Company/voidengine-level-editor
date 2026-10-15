@@ -35,6 +35,8 @@ jobs:
         with:
           release: dev-2026-09
           token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build vendored cgltf (voidengine core imports it)
+        run: cd "$(odin root)/vendor/cgltf/src" && bash build_cgltf.sh
       - run: make odin-test VOIDENGINE=voidengine
       - run: make check-demo VOIDENGINE=voidengine
       - name: Schema agrees with the engine enum
