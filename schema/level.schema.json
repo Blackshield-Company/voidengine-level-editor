@@ -1,0 +1,82 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Blackshield-Company/voidengine-level-editor/schema/level.schema.json",
+  "title": "VoidEngine level",
+  "description": "Sidecar for VoidEngine CSV tilemaps: layers, tileset, entities and spawn points. Version 1.",
+  "type": "object",
+  "required": ["version", "name", "tile_size", "width", "height", "layers", "entities"],
+  "additionalProperties": false,
+  "properties": {
+    "version": { "const": 1 },
+    "name": { "type": "string" },
+    "tile_size": { "type": "integer", "minimum": 1 },
+    "width": { "type": "integer", "minimum": 1 },
+    "height": { "type": "integer", "minimum": 1 },
+    "tileset": {
+      "type": "object",
+      "required": ["path", "columns"],
+      "additionalProperties": false,
+      "properties": {
+        "path": { "type": "string" },
+        "columns": { "type": "integer", "minimum": 1 }
+      }
+    },
+    "layers": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["name", "csv"],
+        "additionalProperties": false,
+        "properties": {
+          "name": { "type": "string" },
+          "csv": { "type": "string", "description": "Path relative to level.json" },
+          "solid_ids": { "type": "array", "items": { "type": "integer", "minimum": 1 } },
+          "visible": { "type": "boolean" }
+        }
+      }
+    },
+    "entities": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "x", "y"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": "integer", "minimum": 0 },
+          "name": { "type": "string" },
+          "spawn": { "type": "boolean", "description": "Marks a spawn point" },
+          "x": { "type": "number" },
+          "y": { "type": "number" },
+          "sprite": {
+            "type": "object",
+            "required": ["width", "height"],
+            "additionalProperties": false,
+            "properties": {
+              "width": { "type": "integer", "minimum": 1 },
+              "height": { "type": "integer", "minimum": 1 },
+              "color": { "type": "array", "items": { "type": "integer", "minimum": 0, "maximum": 255 }, "minItems": 4, "maxItems": 4 },
+              "frame": { "type": "integer", "minimum": 0 }
+            }
+          },
+          "collider": {
+            "type": "object",
+            "required": ["width", "height", "layer"],
+            "additionalProperties": false,
+            "properties": {
+              "width": { "type": "number", "minimum": 0 },
+              "height": { "type": "number", "minimum": 0 },
+              "offset_x": { "type": "number" },
+              "offset_y": { "type": "number" },
+              "layer": { "$ref": "#/$defs/layer" },
+              "mask": { "type": "array", "items": { "$ref": "#/$defs/layer" } }
+            }
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "layer": { "enum": ["None", "Player", "PlayerBullet", "Enemy", "EnemyBullet", "PowerUp", "Wall"] }
+  }
+}

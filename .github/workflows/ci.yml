@@ -1,0 +1,42 @@
+name: CI
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  editor:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: editor
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: editor/package-lock.json
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm test
+      - run: npx vite build
+
+  odin:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          repository: synthalorian/voidengine
+          path: voidengine
+      - run: sudo apt-get update && sudo apt-get install -y libsdl2-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-ttf-dev
+      - uses: laytan/setup-odin@v2
+        with:
+          release: dev-2026-09
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - run: make odin-test VOIDENGINE=voidengine
+      - run: make check-demo VOIDENGINE=voidengine
+      - name: Schema agrees with the engine enum
+        working-directory: editor
+        run: npm ci && VOIDENGINE=../voidengine npx vitest run test/level.test.ts

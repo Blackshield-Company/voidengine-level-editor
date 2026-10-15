@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "name": "basic",
+  "tile_size": 32,
+  "width": 10,
+  "height": 6,
+  "layers": [
+    { "name": "ground", "csv": "ground.csv", "solid_ids": [1, 2], "visible": true },
+    { "name": "decor", "csv": "decor.csv", "solid_ids": [], "visible": true }
+  ],
+  "entities": [
+    {
+      "id": 1, "name": "player", "spawn": true, "x": 64, "y": 64,
+      "sprite": { "width": 24, "height": 24, "color": [0, 255, 255, 255] },
+      "collider": { "width": 24, "height": 24, "layer": "Player", "mask": ["Wall", "Enemy", "PowerUp"] }
+    },
+    {
+      "id": 2, "name": "slime", "x": 224, "y": 96,
+      "sprite": { "width": 20, "height": 16, "color": [255, 0, 170, 255] },
+      "collider": { "width": 20, "height": 16, "offset_x": 0, "offset_y": 2, "layer": "Enemy", "mask": ["Player", "PlayerBullet", "Wall"] }
+    }
+  ]
+}

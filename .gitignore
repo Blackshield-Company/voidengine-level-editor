@@ -1,0 +1,7 @@
+node_modules/
+editor/dist/
+levels/
+level_demo
+voidlevel-test
+fixtures/.tmp/
+*.tsbuildinfo

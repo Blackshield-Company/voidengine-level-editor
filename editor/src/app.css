@@ -1,0 +1,20 @@
+:root { color-scheme: dark; font: 13px/1.4 ui-monospace, "JetBrains Mono", monospace; background: #120a20; color: #e8defc; }
+body { margin: 0; }
+.app { display: grid; grid-template-columns: 220px 1fr 260px; grid-template-rows: auto 1fr auto; height: 100vh; }
+header { grid-column: 1 / 4; display: flex; gap: 6px; align-items: center; padding: 6px 8px; background: #1d1033; border-bottom: 1px solid #ff2bd6; flex-wrap: wrap; }
+header h1 { font-size: 14px; margin: 0 12px 0 0; color: #00f0ff; }
+aside { padding: 8px; overflow: auto; background: #170c29; }
+aside h2 { font-size: 12px; text-transform: uppercase; color: #ff2bd6; margin: 12px 0 6px; }
+main { overflow: auto; background: #0b0614; }
+footer { grid-column: 1 / 4; padding: 4px 8px; background: #1d1033; color: #a99bc9; }
+button, input, select { background: #2a1748; color: inherit; border: 1px solid #5b3a8f; border-radius: 3px; padding: 3px 6px; font: inherit; }
+button.on { background: #ff2bd6; color: #120a20; }
+button:disabled { opacity: .4; }
+label { display: flex; justify-content: space-between; gap: 6px; margin: 3px 0; align-items: center; }
+label input[type=number], label input[type=text] { width: 90px; }
+.palette canvas { image-rendering: pixelated; cursor: pointer; border: 1px solid #5b3a8f; }
+.layer { display: flex; gap: 4px; align-items: center; padding: 2px; }
+.layer.sel { background: #2a1748; }
+.ents div { cursor: pointer; padding: 2px; } .ents div.sel { background: #2a1748; }
+.mask { display: grid; grid-template-columns: 1fr 1fr; }
+canvas.map { image-rendering: pixelated; cursor: crosshair; display: block; }
