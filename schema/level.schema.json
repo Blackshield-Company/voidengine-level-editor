@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://github.com/Blackshield-Company/voidengine-level-editor/schema/level.schema.json",
+  "$id": "https://github.com/synthalorian/voidengine-level-editor/schema/level.schema.json",
   "title": "VoidEngine level",
   "description": "Sidecar for VoidEngine CSV tilemaps: layers, tileset, entities and spawn points. Version 1.",
   "type": "object",
