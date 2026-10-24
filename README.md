@@ -2,7 +2,7 @@
 
 # VoidEngine Level Editor
 
-A small visual level editor for [VoidEngine](https://github.com/synthalorian/voidengine) (Odin + SDL2) 2D games.
+A small visual level editor for [VoidEngine](https://github.com/Blackshield-Company/voidengine) (Odin + SDL2) 2D games.
 You paint tilemaps, place entities with components, and set collision layers. The editor saves the engine's CSV
 tilemap format plus a `level.json` sidecar. **Play** runs the level in a VoidEngine window that hot-reloads on every save.
 
@@ -35,7 +35,7 @@ tilemap format plus a `level.json` sidecar. **Play** runs the level in a VoidEng
 Needs Node 20+, Odin (tested with `dev-2026-09`), SDL2, and a VoidEngine checkout. The default checkout path is `../voidengine`.
 
 ```sh
-git clone https://github.com/synthalorian/voidengine ../voidengine   # if you don't have it
+git clone https://github.com/Blackshield-Company/voidengine ../voidengine   # if you don't have it
 cd editor && npm install && npm run dev
 ```
 
